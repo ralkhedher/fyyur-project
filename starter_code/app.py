@@ -14,8 +14,8 @@ from flask_wtf import Form
 from forms import *
 from flask_migrate import Migrate
 import datetime
-from sqlalchemy import Column, Integer, DateTime
 from flask import jsonify
+from sqlalchemy import Column, Integer, DateTime
 import sys
 from flask import Flask, abort
 
@@ -62,13 +62,13 @@ class Venue(db.Model):
     state = db.Column(db.String(120), nullable=False)
     address = db.Column(db.String(120), nullable=False)
     phone = db.Column(db.String(120), nullable=False)
+    seeking_talent = db.Column(db.Boolean, default=False)
+    seeking_description = db.Column(db.String(500), default=None)
     image_link = db.Column(db.String(500),  default=None)
     facebook_link = db.Column(db.String(120),  default=None)
     genres = db.Column(db.String(120), nullable=False)
     past_shows_count = db.Column(db.Integer, default=0)
     website = db.Column(db.String(120),  default=None)
-    seeking_talent = db.Column(db.Boolean, default=False)
-    seeking_description = db.Column(db.String(500), default=None)
     upcoming_shows_count = db.Column(db.Integer, default=0)
     past_shows = db.Column(db.String(500), default=None )
     upcoming_shows = db.Column(db.String(500),  default=None )
